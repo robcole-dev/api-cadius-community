@@ -1,108 +1,99 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Cadius Community API
 
-Welcome Rob Cole,
+The Cadius Comunity API is a backend structure using DRF "Django Rest Framework".
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+To visit the live version of the backend (hosted by Heroku) click [here]()
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## UX
 
-## Gitpod Reminders
+### Wireframes and Designs
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Below is the ERD for this project.
 
-`python3 -m http.server`
+![Entity Relationship Diagram]()
 
-A blue button should appear to click: _Make Public_,
+## Features 
 
-Another blue button should appear to click: _Open Browser_.
+Below are a list of key features and future features.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### Existing Features
 
-A blue button should appear to click: _Make Public_,
+- __First Load__
+    - When the site first loads users are presented with the category screen
+    - The user is able to select a category to preview
 
-Another blue button should appear to click: _Open Browser_.
+![First-Load](documentation/readme/first-load.jpg)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+## Technologies Used
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+During development of the site a number of programs and web based applications were used. You can find a list of the below:
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+[DrawIO](https://drawio-app.com/) - Used to create the Entity Relationship Diagram
 
-------
+[Github](https://github.com/) - Used to host the project
 
-## Release History
+[Gitpod](https://www.gitpod.io/) - Used as a cloud based IDE to code the project
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+[GIT](https://en.wikipedia.org/wiki/Git) - Used for version control
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+[Heroku](https://www.heroku.com/) - Used to host the deployed site
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+Plugins that was used to develop this site are:
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+[REST](https://www.django-rest-framework.org/) - Used for the backend framework
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+[Django](https://www.djangoproject.com/) - Used for the project framework
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+Code that was used to develop this site are:
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+[Python](https://www.python.org/) - Used for backend coding
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+## Data Model
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+## Testing
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+## Deployment
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+The site was deployed to Heroku. The steps to deploy are as follows: 
+- We need to install everything in the requirements.txt file. To do this we run the following command 
+ 
+    ```pip3 install -r requirements.txt```
+- Login / signup to [Heroku](https://id.heroku.com/login)
+- On the dasboard, once logged in, click New and then click Create new app
+- Give the App a name and select your region, then click create app
+- Click resources and in the add-ons search for `Heroku Postgres`. Select the free version and click submit order form.
+- Login / signup to [Cloudinary](https://cloudinary.com/)
+- On the dashboard, once logged in, click the API Environment Variable to copy it
+- Navigate back to Heroku and the app you created earlier
+- Click settings and then click Reveal config Vars. This is where we need to set a couple of things.
+- In the Key box enter `CLOUDINARY_URL` and in the value enter the API Environment Variable you copied earlier. Before clicking add, remove `CLOUDINARY_URL=` from the value field
+- In the Key box enter `PORT` and in the value enter `8000` then click add
+- In the Key box enter `SECRET_KEY` and in the value enter a random key then click add
+- Click deploy from the menu at the top, then click github.
+- enter the repositry name and click search. if found the repositry will appear below, click connect.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+[Link to deployed site]()
 
-------
+### Local Deployment
 
-## FAQ about the uptime script
+if you would like to make a clone of this repository, you can type the following command in your iDE terminal:
 
-**Why have you added this script?**
+- `git clone https://github.com/robcole-dev/cadius-forum.git`
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+Alternatively, if using Git pod, you can click below to create your own workspace using this repository.
 
-**How will this affect me?**
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://github.com/robcole-dev/api-cadius-community)
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+Please make sure to install the requirements using ```pip3 install -r requirements.txt``` in your terminal
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+## Credits 
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+### Acknowledgments
 
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+- Aura Cole (My Wife)
+- The community over on Code Institute's Slack
