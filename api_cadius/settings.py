@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'servers',
+    'ratings',
 ]
 
 MIDDLEWARE = [
