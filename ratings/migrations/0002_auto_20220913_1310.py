@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='rating',
             name='author',
-            field=models.ForeignKey(default='admin', on_delete=django.db.models.deletion.CASCADE, to='auth.user'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='auth.user'),
             preserve_default=False,
         ),
         migrations.AddField(

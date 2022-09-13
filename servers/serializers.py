@@ -1,10 +1,12 @@
 from rest_framework import serializers
 from .models import Server
+from ratings.models import Rating
 
 
 class ServerSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
     is_owner = serializers.SerializerMethodField()
+    rating = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -29,5 +31,5 @@ class ServerSerializer(serializers.ModelSerializer):
         model = Server
         fields = [
             'id', 'server_name', 'server_address', 'author', 'created_date',
-            'banner', 'is_owner'
+            'rating', 'banner', 'is_owner'
         ]
