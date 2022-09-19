@@ -11,5 +11,5 @@ class Rating(models.Model):
     
 
     class Meta:
-        ordering = ['server']
+        ordering = ['-created_date']
         

@@ -6,7 +6,7 @@ from ratings.models import Rating
 class ServerSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
     is_owner = serializers.SerializerMethodField()
-    rating = serializers.ReadOnlyField()
+    avg_rating = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -31,5 +31,5 @@ class ServerSerializer(serializers.ModelSerializer):
         model = Server
         fields = [
             'id', 'server_name', 'server_address', 'author', 'created_date',
-            'rating', 'banner', 'is_owner'
+            'avg_rating', 'banner', 'is_owner'
         ]
