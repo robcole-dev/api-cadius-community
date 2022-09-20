@@ -22,6 +22,13 @@ class ServerSerializer(serializers.ModelSerializer):
                 'Image is higher than 60px, please select another image'
             )
         return value
+    
+    def validate_game(self, value):
+        if value == 'pick':
+            raise serializers.ValidationError(
+                'Please select a Game.'
+            )
+        return value
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -30,6 +37,6 @@ class ServerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Server
         fields = [
-            'id', 'server_name', 'server_address', 'author', 'created_date',
+            'id','game', 'server_name', 'server_address', 'author', 'created_date',
             'avg_rating', 'banner', 'is_owner'
         ]
