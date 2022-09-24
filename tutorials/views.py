@@ -4,13 +4,20 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Tutorial
 from .serializers import TutorialSerializer
+from api_cadius.permissions import IsOwner
 
 
-class TutorialList(APIView):
+class TutorialList(generics.ListCreateAPIView):
     serializer_class = TutorialSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = Tutorial.objects.all()
 
-    def get(self, request):
-        tutorial = Tutorial.objects.all()
-        serializer = TutorialSerializer(tutorial, many=True, context={'request': request})
-        return Response(serializer.data)
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+
+class TutorialDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsOwner]
+    serializer_class = TutorialSerializer
+    queryset = Tutorial.objects.annotate()
+

@@ -21,5 +21,5 @@ class TutorialSerializer(serializers.ModelSerializer):
         model = Tutorial
         fields = [
             'id', 'title', 'description', 'video', 'image',
-            'author', 'created_date', 'last_modified'
+            'author', 'created_date', 'last_modified', 'is_owner'
         ]
