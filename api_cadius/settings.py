@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'servers',
     'ratings',
     'tutorials',
+    'comments',
 ]
 
 MIDDLEWARE = [
