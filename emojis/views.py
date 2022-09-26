@@ -12,3 +12,9 @@ class EmojiList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+
+class EmojiDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsOwner]
+    serializer_class = EmojiSerializer
+    queryset = Emoji.objects.annotate()

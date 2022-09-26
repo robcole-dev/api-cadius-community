@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('servers.urls')),
     path('', include('ratings.urls')),
     path('', include('tutorials.urls')),
-    path('', include('comments.urls'))
+    path('', include('comments.urls')),
+    path('', include('emojis.urls'))
 ]
