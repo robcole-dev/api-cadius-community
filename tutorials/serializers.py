@@ -5,6 +5,14 @@ from .models import Tutorial
 class TutorialSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
     is_owner = serializers.SerializerMethodField()
+    created_date = serializers.SerializerMethodField()
+    last_modified = serializers.SerializerMethodField()
+
+    def get_created_date(self, obj):
+        return naturaltime(obj.created_date)
+    
+    def get_last_modified(self, obj):
+        return naturaltime(obj.last_modified)
 
     def validate_video(self, value):
         if value.size > 1024 * 1024 * 100:
