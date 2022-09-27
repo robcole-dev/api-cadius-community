@@ -2,7 +2,7 @@
 
 The Cadius Comunity API is a backend structure using DRF "Django Rest Framework".
 
-To visit the live version of the backend (hosted by Heroku) click [here]()
+To visit the live version of the backend (hosted by Heroku) click [here](https://api-cadius.herokuapp.com/)
 
 ## UX
 
@@ -10,20 +10,7 @@ To visit the live version of the backend (hosted by Heroku) click [here]()
 
 Below is the ERD for this project.
 
-![Entity Relationship Diagram]()
-
-## Features 
-
-Below are a list of key features and future features.
-
-### Existing Features
-
-- __First Load__
-    - When the site first loads users are presented with the category screen
-    - The user is able to select a category to preview
-
-![First-Load](documentation/readme/first-load.jpg)
-
+![Entity Relationship Diagram](documents/readme/entity-relation-chart.jpg)
 
 ## Technologies Used
 
@@ -51,6 +38,39 @@ Code that was used to develop this site are:
 
 ## Data Model
 
+- __Servers Model__
+    - This model holds all gaming servers that users have added.
+    - This model links to the Ratings model on the Server_id.
+
+![Servers Model](documents/readme/servers-model.jpg)
+
+- __Ratings Model__
+    - This model holds all the ratings for the servers model.
+    - a user will be able to rating the server from 1-5 stars.
+
+![Ratings Model](documents/readme/ratings-model.jpg)
+
+- __Tutorials Model__
+    - This model holds all user tutorial posts.
+    - These posts can consist of user guides or videos.
+
+![Tutorials Model](documents/readme/tutorials-model.jpg)
+
+- __Comments Model__
+    - This model holds all the user comments made on a tutorial post.
+    - This links to both the tutorial model and Django User model.
+
+![Comments Model](documents/readme/comments-model.jpg)
+
+- __Reacts Model__
+    - This model handles all the emojis that users react with on a tutorial post.
+
+![Reacts Model](documents/readme/reacts-model.jpg)
+
+- __Profile Model__
+    - This model will handle the profile of the user.
+
+![Profiles Model](documents/readme/profiles-model.jpg)
 
 
 ## Testing
@@ -77,13 +97,13 @@ The site was deployed to Heroku. The steps to deploy are as follows:
 - Click deploy from the menu at the top, then click github.
 - enter the repositry name and click search. if found the repositry will appear below, click connect.
 
-[Link to deployed site]()
+[Link to deployed site](https://api-cadius.herokuapp.com/)
 
 ### Local Deployment
 
 if you would like to make a clone of this repository, you can type the following command in your iDE terminal:
 
-- `git clone https://github.com/robcole-dev/cadius-forum.git`
+- `git clone https://github.com/robcole-dev/api-cadius-community.git`
 
 Alternatively, if using Git pod, you can click below to create your own workspace using this repository.
 
