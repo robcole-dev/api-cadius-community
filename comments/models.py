@@ -4,8 +4,6 @@ from tutorials.models import Tutorial
 
 
 class Comment(models.Model):
-    """
-    """
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     tutorial = models.ForeignKey(Tutorial, on_delete=models.CASCADE)
     description = models.CharField(max_length=250)
