@@ -9,76 +9,110 @@ __Python__
 
 No errors were returned when passing throught the offical PEP8 Validation
 
-__Cadiusforum Project Files__
+__API Cadius Project Files__
 
 - Settings.py
 
-![Settings.py](documentation/testing/project-settings-validator.jpg)
+![Settings.py]()
 - urls.py
 
-![urls.py](documentation/testing/project-url-validation.jpg)
+![urls.py]()
+- permissions.py
 
-__Category App__
+![permissions.py]()
+- serializers.py
 
-- admin.py
-
-![admin.py](documentation/testing/category-admin-validation.jpg)
-- models.py
-
-![models.py](documentation/testing/category-model-validation.jpg)
+![serializers.py]()
 - views.py
 
-![views.py](documentation/testing/category-views-validation.jpg)
+![views.py]()
 
-__Topic App__
+__Comments App__
 
-- admin.py
-
-![admin.py](documentation/testing/topic-admin-validation.jpg)
-- forms.py
-
-![forms.py](documentation/testing/topic-forms-validation.jpg)
 - models.py
 
-![models.py](documentation/testing/topic-models-validation.jpg)
+![models.py]()
+- views.py
+
+![views.py]()
+- serializers.py
+
+![serializers.py]()
 - urls.py
 
-![urls.py](documentation/testing/topic-urls-validation.jpg)
-- views.py
+![urls.py]()
 
-![views.py](documentation/testing/topic-views-validation.jpg)
+__Emojis App__
 
-__Reply App__
-
-- admin.py
-
-![admin.py](documentation/testing/reply-admin-validation.jpg)
-- forms.py
-
-![forms.py](documentation/testing/reply-forms-validation.jpg)
 - models.py
 
-![models.py](documentation/testing/reply-models-validation.jpg)
-- urls.py
-
-![urls.py](documentation/testing/reply-urls-validation.jpg)
+![models.py]()
 - views.py
 
-![views.py](documentation/testing/reply-views-validation.jpg)
+![views.py]()
+- serializers.py
 
+![serializers.py]()
+- urls.py
 
-## Fixed Bugs
-During development, I ran into some bugs, errors, and issues which I have successfully debugged and troubleshot.
+![urls.py]()
 
-You can find them on the issues tracker on the repository. [Here]()
+__Profiles App__
 
+- models.py
 
-![Closed Tickets]()
+![models.py]()
+- views.py
 
-## Unfixed Bugs
+![views.py]()
+- serializers.py
 
-Currently there is X issue outstanding
+![serializers.py]()
+- urls.py
 
-- 
+![urls.py]()
 
-![Open Tickets]()
+__Ratings App__
+
+- models.py
+
+![models.py]()
+- views.py
+
+![views.py]()
+- serializers.py
+
+![serializers.py]()
+- urls.py
+
+![urls.py]()
+
+__Servers App__
+
+- models.py
+
+![models.py]()
+- views.py
+
+![views.py]()
+- serializers.py
+
+![serializers.py]()
+- urls.py
+
+![urls.py]()
+
+__Tutorials App__
+
+- models.py
+
+![models.py]()
+- views.py
+
+![views.py]()
+- serializers.py
+
+![serializers.py]()
+- urls.py
+
+![urls.py]()
