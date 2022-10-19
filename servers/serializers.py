@@ -5,6 +5,8 @@ from ratings.models import Rating
 
 class ServerSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
+    author_id = serializers.ReadOnlyField(source='author.profile.id')
+    author_image = serializers.ReadOnlyField(source='author.profile.image.url')
     is_owner = serializers.SerializerMethodField()
     avg_rating = serializers.ReadOnlyField()
 
@@ -22,7 +24,7 @@ class ServerSerializer(serializers.ModelSerializer):
                 'Image is higher than 60px, please select another image'
             )
         return value
-    
+
     def validate_game(self, value):
         if value == 'pick':
             raise serializers.ValidationError(
@@ -37,6 +39,7 @@ class ServerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Server
         fields = [
-            'id','game', 'server_name', 'server_address', 'author', 'created_date',
-            'avg_rating', 'banner', 'is_owner'
+            'id', 'game', 'server_name', 'server_address', 'author',
+            'created_date', 'avg_rating', 'banner', 'is_owner',
+            'author_id', 'author_image'
         ]
