@@ -8,6 +8,7 @@ class ServerSerializer(serializers.ModelSerializer):
     author_id = serializers.ReadOnlyField(source='author.profile.id')
     author_image = serializers.ReadOnlyField(source='author.profile.image.url')
     is_owner = serializers.SerializerMethodField()
+    rating_id = serializers.SerializerMethodField()
     avg_rating = serializers.ReadOnlyField()
 
     def validate_image(self, value):
@@ -36,10 +37,19 @@ class ServerSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.author
 
+    def get_rating_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            rating = Rating.objects.filter(
+                author=user, server=obj
+            ).first()
+            return rating.id if rating else None
+        return None
+
     class Meta:
         model = Server
         fields = [
             'id', 'game', 'server_name', 'server_address', 'author',
             'created_date', 'avg_rating', 'banner', 'is_owner',
-            'author_id', 'author_image'
+            'author_id', 'author_image', 'rating_id'
         ]
