@@ -13,5 +13,5 @@ class EmojiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Emoji
         fields = [
-            'id', 'tutorial', 'emoji', 'author', 'created_date', 'is_owner'
+            'id', 'screenshot', 'emoji', 'author', 'created_date', 'is_owner'
         ]

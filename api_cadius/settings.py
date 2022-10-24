@@ -87,7 +87,7 @@ INSTALLED_APPS = [
     'profiles',
     'servers',
     'ratings',
-    'tutorials',
+    'screenshots',
     'comments',
     'emojis',
 ]
