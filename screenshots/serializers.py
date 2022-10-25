@@ -4,6 +4,9 @@ from .models import Screenshot
 
 class ScreenshotSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
+    author_id = serializers.ReadOnlyField(source='author.profile.id')
+    author_image = serializers.ReadOnlyField(source='author.profile.image.url')
+
     is_owner = serializers.SerializerMethodField()
 
     def validate_image(self, value):
@@ -29,5 +32,6 @@ class ScreenshotSerializer(serializers.ModelSerializer):
         model = Screenshot
         fields = [
             'id', 'title', 'description', 'image',
-            'author', 'created_date', 'last_modified', 'is_owner'
+            'author', 'created_date', 'last_modified', 'is_owner',
+            'author_id', 'author_image'
         ]
