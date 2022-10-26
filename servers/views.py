@@ -12,10 +12,10 @@ class ServerList(APIView):
     serializer_class = ServerSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-
     def get(self, request):
         servers = Server.objects.annotate(avg_rating=Avg('rating__rating'))
-        serializer = ServerSerializer(servers, many=True, context={'request': request})
+        serializer = ServerSerializer(servers, many=True,
+                                      context={'request': request})
         return Response(serializer.data)
 
     def post(self, request):
@@ -27,8 +27,8 @@ class ServerList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class ServerDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwner]
     serializer_class = ServerSerializer
     queryset = Server.objects.annotate(avg_rating=Avg('rating__rating'))
-
