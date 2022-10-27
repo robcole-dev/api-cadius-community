@@ -5,6 +5,9 @@ from .models import Comment
 
 class CommentSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
+    author_id = serializers.ReadOnlyField(source='author.profile.id')
+    author_image = serializers.ReadOnlyField(
+        source='author.profile.profile_image.url')
     is_owner = serializers.SerializerMethodField()
     created_date = serializers.SerializerMethodField()
     last_modified = serializers.SerializerMethodField()
@@ -23,5 +26,5 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = [
             'id', 'screenshot', 'description', 'author', 'created_date',
-            'last_modified', 'is_owner'
+            'last_modified', 'is_owner', 'author_id', 'author_image'
         ]
