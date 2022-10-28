@@ -5,11 +5,11 @@ from api_cadius.permissions import IsOwner
 
 
 class ProfileList(generics.ListAPIView):
-    queryset = Profile.objects.all()
+    queryset = Profile.objects.all().order_by('-created_date')
     serializer_class = ProfileSerializer()
 
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     permission_classes = [IsOwner]
-    queryset = Profile.objects.all()
+    queryset = Profile.objects.all().order_by('-created_date')
     serializer_class = ProfileSerializer
