@@ -13,15 +13,18 @@ class RatingList(APIView):
 
     def get(self, request):
         rating = Rating.objects.all()
-        serializer = RatingSerializer(rating, many=True, context={'request': request})
+        serializer = RatingSerializer(
+            rating, many=True, context={'request': request})
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = RatingSerializer(data=request.data, context={'request': request})
+        serializer = RatingSerializer(
+            data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save(author=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class RatingDetail(APIView):
     permission_classes = [IsOwner]
@@ -34,7 +37,7 @@ class RatingDetail(APIView):
             return rating
         except Rating.DoesNotExist:
             raise Http404
-    
+
     def get(self, request, pk):
         rating = self.get_rating(pk)
         serializer = RatingSerializer(

@@ -8,8 +8,6 @@ class Rating(models.Model):
     server = models.ForeignKey(Server, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
-    
 
     class Meta:
         ordering = ['-created_date']
-        
