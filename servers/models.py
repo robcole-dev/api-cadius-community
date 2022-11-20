@@ -20,7 +20,7 @@ class Server(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     banner = models.ImageField(
         upload_to='images/', default='../default_server_banner_hfurfy',
-        blank=True, null=True
+        blank=True
     )
 
     class Meta:
