@@ -13,7 +13,7 @@ class ServerList(generics.ListCreateAPIView):
 
     queryset = Server.objects.annotate(
         avg_rating=Avg('rating__rating')
-    ).order_by('-created_at')
+    ).order_by('-created_date')
     filter_backends = [
         DjangoFilterBackend,
     ]
@@ -30,4 +30,4 @@ class ServerDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ServerSerializer
     queryset = Server.objects.annotate(
         avg_rating=Avg('rating__rating')
-    ).order_by('-created_at')
+    ).order_by('-created_date')
