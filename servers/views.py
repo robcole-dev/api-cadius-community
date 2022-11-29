@@ -24,4 +24,7 @@ class ServerList(generics.ListCreateAPIView):
 class ServerDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwner]
     serializer_class = ServerSerializer
-    queryset = Server.objects.annotate(avg_rating=Avg('rating__rating'))
+    queryset = Server.objects.annotate(
+        comments_count=Count('comment', distinct=True),
+        avg_rating=Avg('rating__rating')
+    ).order_by('-created_at')
