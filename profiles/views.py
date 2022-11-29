@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.http import Http404
 from rest_framework import status
 from rest_framework.views import APIView
@@ -16,5 +17,8 @@ class ProfileList(generics.ListAPIView):
 
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
-    serializer_class = ProfileSerializer
     permission_classes = [IsOwner]
+    queryset = Profile.objects.annotate(
+        server_count=Count('username__server', distinct=True)
+    ).order_by('-created_date')
+    serializer_class = ProfileSerializer
