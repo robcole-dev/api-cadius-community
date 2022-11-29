@@ -18,7 +18,7 @@ class ServerList(generics.ListCreateAPIView):
     ).order_by('-created_at')
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(author_id=self.request.user)
 
 
 class ServerDetail(generics.RetrieveUpdateDestroyAPIView):
