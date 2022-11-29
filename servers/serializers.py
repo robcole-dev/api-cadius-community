@@ -7,6 +7,7 @@ class ServerSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
     author_id = serializers.ReadOnlyField(source='author.profile.id')
     author_image = serializers.ReadOnlyField(source='author.profile.image.url')
+    comments_count = serializers.ReadOnlyField()
     is_owner = serializers.SerializerMethodField()
     rating_id = serializers.SerializerMethodField()
     avg_rating = serializers.ReadOnlyField()
@@ -51,5 +52,5 @@ class ServerSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'game', 'server_name', 'server_address', 'author',
             'created_date', 'avg_rating', 'banner', 'is_owner',
-            'author_id', 'author_image', 'rating_id'
+            'author_id', 'author_image', 'rating_id', 'comments_count'
         ]

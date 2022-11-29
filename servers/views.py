@@ -8,24 +8,17 @@ from .serializers import ServerSerializer
 from api_cadius.permissions import IsOwner
 
 
-class ServerList(APIView):
+class ServerList(generics.ListCreateAPIView):
     serializer_class = ServerSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def get(self, request):
-        servers = Server.objects.annotate(avg_rating=Avg('rating__rating'))
-        serializer = ServerSerializer(servers, many=True,
-                                      context={'request': request})
-        return Response(serializer.data)
+    queryset = Server.objects.annotate(
+        comments_count=Count('comment', distinct=True),
+        avg_rating=Avg('rating__rating')
+    ).order_by('-created_at')
 
-    def post(self, request):
-        serializer = ServerSerializer(
-            data=request.data, context={'request': request}
-        )
-        if serializer.is_valid():
-            serializer.save(author=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 class ServerDetail(generics.RetrieveUpdateDestroyAPIView):
