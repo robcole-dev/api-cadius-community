@@ -10,7 +10,6 @@ class Profile(models.Model):
     username = models.OneToOneField(User, on_delete=models.CASCADE)
     screen_name = models.CharField(max_length=50)
     full_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
     created_date = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now_add=True)
     profile_image = models.ImageField(
