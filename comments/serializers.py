@@ -28,3 +28,7 @@ class CommentSerializer(serializers.ModelSerializer):
             'id', 'screenshot', 'description', 'author', 'created_date',
             'last_modified', 'is_owner', 'author_id', 'author_image'
         ]
+
+
+class CommentDetailSerializer(CommentSerializer):
+    screenshot = serializers.ReadOnlyField(source='screenshot.id')
