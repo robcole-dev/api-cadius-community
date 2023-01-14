@@ -7,7 +7,7 @@ class Profile(models.Model):
     """
     Model for User Profiles
     """
-    username = models.OneToOneField(User, on_delete=models.CASCADE)
+    author = models.OneToOneField(User, on_delete=models.CASCADE)
     screen_name = models.CharField(max_length=50)
     full_name = models.CharField(max_length=50)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -20,12 +20,12 @@ class Profile(models.Model):
         ordering = ['-created_date']
 
     def __str__(self):
-        return f"{self.username}'s profile"
+        return f"{self.author}'s profile"
 
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(username=instance)
+        Profile.objects.create(author=instance)
 
 
 post_save.connect(create_profile, sender=User)

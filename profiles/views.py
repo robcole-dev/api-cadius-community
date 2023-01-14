@@ -11,7 +11,7 @@ from api_cadius.permissions import IsOwner
 
 class ProfileList(generics.ListAPIView):
     queryset = Profile.objects.annotate(
-        server_count=Count('username__server', distinct=True)
+        server_count=Count('author__server', distinct=True)
     ).order_by('-created_date')
     serializer_class = ProfileSerializer
 
@@ -19,6 +19,6 @@ class ProfileList(generics.ListAPIView):
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     permission_classes = [IsOwner]
     queryset = Profile.objects.annotate(
-        server_count=Count('username__server', distinct=True)
+        server_count=Count('author__server', distinct=True)
     ).order_by('-created_date')
     serializer_class = ProfileSerializer
