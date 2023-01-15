@@ -22,7 +22,7 @@ class ServerList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
-        serializer.save(author_id=self.request.user)
+        serializer.save(author=self.request.user)
 
 
 class ServerDetail(generics.RetrieveUpdateDestroyAPIView):
